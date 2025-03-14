@@ -12,7 +12,7 @@ def is_divisible_by_k(x, k):
     '''
     Checks whether x is divisible by k.
     '''
-    return x%k == 0
+    return x % k == 0
 
 '''
 Store all the integers that are multiples of 2 or 5 or 7 that are lower
@@ -42,8 +42,30 @@ x = set()
 for i in range(1, 1001):
     if (is_divisible_by_k(i, 2) or is_divisible_by_k(i, 5) or is_divisible_by_k(i, 7)):
         x.add(i)
-'''
-Sum all the integers that are multiples of 2 or 5 or 7 that are lower
-or equal to 1000 (excluding doubles)
-'''
 print(sum(x))
+
+
+
+#with the classes that we learned after
+
+class SumOfMultiples:
+    def __init__ (self, last):
+        self.last = last
+        self.multiples = set()
+        
+    def is_divisible_by_k(self, x, k):
+        return x % k == 0
+    
+    def multiples_find(self):
+        for i in range(1, self.last + 1):
+            if (self.is_divisible_by_k(i, 2) or self.is_divisible_by_k(i, 5) or self.is_divisible_by_k(i, 7)):
+                self.multiples.add(i)
+                
+    def sum_multiples(self):
+        self.multiples_find()
+        return sum(self.multiples)
+    
+
+exercise = SumOfMultiples(1000)
+answer = exercise.sum_multiples()
+print(answer)
